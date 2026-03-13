@@ -54,3 +54,88 @@ function displayMyLibrary() {
         bookCardContainer.appendChild(bookCard);
     });
 }
+
+const newBookBtn = document.querySelector(".new-book-button");
+newBookBtn.addEventListener("click", function(e) {    
+    const pageContainer = document.querySelector(".page-container");
+    
+    const formContainer = document.createElement("div");
+    formContainer.classList.add("form-sidebar");
+    formContainer.style.gridArea = "1 / 1 / 2 / 2";
+
+    const mainContent = document.querySelector(".main-content");
+    mainContent.style.gridArea = "1 / 2 / 2 / 3";
+
+    const newBookForm = document.createElement("form");
+    newBookForm.classList.add("new-book-form");
+
+    const titleInput = document.createElement("input");
+    titleInput.type = "text";
+    titleInput.id = "title";
+    titleInput.placeholder = "Enter book's title";
+
+    const titleLabel = document.createElement("label");
+    titleLabel.textContent = "Title:";
+    titleLabel.setAttribute("for", "title");
+
+    const authorInput = document.createElement("input");
+    authorInput.type = "text";
+    authorInput.id = "author";
+    authorInput.placeholder = "Enter book's author";
+
+    const authorLabel = document.createElement("label");
+    authorLabel.textContent = "Author:";
+    authorLabel.setAttribute("for", "author");
+
+    const pagesInput = document.createElement("input");
+    pagesInput.type = "number";
+    pagesInput.id = "pages";
+    pagesInput.placeholder = "# of pages in book";
+
+    const pagesLabel = document.createElement("label");
+    pagesLabel.textContent = "# of pages:";
+    pagesLabel.setAttribute("for", "pages");
+
+    const readSelect = document.createElement("select");
+    readSelect.name = "readStatus";
+    readSelect.id = "readStatus";
+
+    const readLabel = document.createElement("label");
+    readLabel.textContent = "Select read status";
+    readLabel.setAttribute("for", "readStatus");
+
+    const optionOne = document.createElement("option");
+    optionOne.value = "Read";
+    optionOne.textContent = "Read";
+
+    const optionTwo = document.createElement("option");
+    optionTwo.value = "Not read yet";
+    optionTwo.textContent = "Not read yet";
+
+    const formSubmitBtn = document.createElement("button");
+    formSubmitBtn.type = "submit";
+    formSubmitBtn.classList.add("form-submit");
+    formSubmitBtn.textContent = "Submit";
+
+    readSelect.appendChild(optionOne);
+    readSelect.appendChild(optionTwo);
+    newBookForm.appendChild(titleLabel);
+    newBookForm.appendChild(titleInput);
+    newBookForm.appendChild(authorLabel);
+    newBookForm.appendChild(authorInput);
+    newBookForm.appendChild(pagesLabel);
+    newBookForm.appendChild(pagesInput);
+    newBookForm.appendChild(readLabel);
+    newBookForm.appendChild(readSelect);
+    newBookForm.appendChild(formSubmitBtn);
+    formContainer.appendChild(newBookForm);
+    pageContainer.appendChild(formContainer);
+
+    formSubmitBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.valueAsNumber, readSelect.value);
+        newBookForm.reset();
+        pageContainer.removeChild(formContainer);
+        mainContent.style.gridArea = "1 / 1 / 2 / 3";
+    });
+})
