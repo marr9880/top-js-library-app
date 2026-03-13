@@ -45,11 +45,45 @@ function displayMyLibrary() {
         const id = document.createElement("p");
         id.textContent = `ID: ${book.id}`;
 
+        bookCard.dataset.bookId = book.id;
+
+        const removeBook = document.createElement("div");
+        removeBook.classList.add("remove-book");
+        
+        const removeBookBtn = document.createElement("button");
+        removeBookBtn.type = "button";
+        removeBookBtn.textContent = "Remove";
+        removeBookBtn.classList.add("remove-book-button");
+
+        const removeBookLabel = document.createElement("p");
+        removeBookLabel.classList.add("remove-book-label");
+        removeBookLabel.textContent = "Click here to remove book from library";
+
+        removeBook.appendChild(removeBookLabel);
+        removeBook.appendChild(removeBookBtn);
+
+        const changeReadStatus = document.createElement("div");
+        changeReadStatus.classList.add("change-read-status");
+
+        const changeReadStatusBtn = document.createElement("button");
+        changeReadStatusBtn.type = "button";
+        changeReadStatusBtn.textContent = "Change";
+        changeReadStatusBtn.classList.add("change-read-status-button");
+
+        const changeReadStatusLabel = document.createElement("p");
+        changeReadStatusLabel.classList.add("change-read-status-label");
+        changeReadStatusLabel.textContent = "Click here to change book's read status";
+
+        changeReadStatus.appendChild(changeReadStatusLabel);
+        changeReadStatus.appendChild(changeReadStatusBtn);
+
         bookCard.appendChild(title);
         bookCard.appendChild(author);
         bookCard.appendChild(pages);
         bookCard.appendChild(read);
         bookCard.appendChild(id);
+        bookCard.appendChild(removeBook);
+        bookCard.appendChild(changeReadStatus);
 
         bookCardContainer.appendChild(bookCard);
     });

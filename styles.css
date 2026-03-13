@@ -87,3 +87,38 @@ button.form-submit {
     border-radius: 5px;
     color: rgb(40, 3, 3);
 }
+
+button.remove-book-button {
+    font-size: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 700;
+    background-color: red;
+    padding: 5px;
+    border-radius: 7.5px;
+}
+
+button.change-read-status-button {
+    font-size: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 700;
+    background-color: rgb(224, 162, 81);
+    padding: 5px;
+    border-radius: 7.5px;
+}
+
+.remove-book,
+.change-read-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+    border: solid 1px black;
+}
+
+p.remove-book-label,
+p.change-read-status-label {
+    font-size: 1rem;
+    font-weight: 500;
+}
