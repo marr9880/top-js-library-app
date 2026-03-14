@@ -45,7 +45,7 @@ function displayMyLibrary() {
         const id = document.createElement("p");
         id.textContent = `ID: ${book.id}`;
 
-        bookCard.dataset.bookId = book.id;
+        bookCard.id = book.id;
 
         const removeBook = document.createElement("div");
         removeBook.classList.add("remove-book");
@@ -86,6 +86,22 @@ function displayMyLibrary() {
         bookCard.appendChild(changeReadStatus);
 
         bookCardContainer.appendChild(bookCard);
+
+        removeBookBtn.addEventListener("click", function(e) {
+            const bookToRemove = document.getElementById(book.id);
+            bookCardContainer.removeChild(bookToRemove);
+            const index = myLibrary.indexOf(bookToRemove);
+            myLibrary.splice(index, 1);
+        });
+
+        changeReadStatusBtn.addEventListener("click", function(e) {
+            const bookToChange = document.getElementById(book.id);
+            if (read.textContent === "Read") {
+                read.textContent = "Not read yet";
+            } else {
+                read.textContent = "Read";
+            }
+        });
     });
 }
 
